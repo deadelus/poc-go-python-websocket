@@ -1,0 +1,13 @@
+services:
+  yoloe-server:
+    build: .
+    container_name: yoloe-server
+    volumes:
+      - ./server.py:/ultralytics/server.py
+      - ./models:/ultralytics/models
+      - ./assets:/ultralytics/assets
+    working_dir: /ultralytics
+    command: python server.py
+    ports:
+      - "8765:8765"
+    restart: unless-stopped
